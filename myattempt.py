@@ -32,6 +32,6 @@ app.layout = html.Div([
                   }
               })
 ])
-server.secret_key = os.environ.get(‘SECRET_KEY’, ‘my-secret-key’)
+erver.secret_key = os.environ.get(‘SECRET_KEY’, ‘my-secret-key’)
 if __name__ =='__main__':
     app.run_server(debug=True)
