@@ -1,0 +1,38 @@
+import pandas as pd 
+import dash_core_components as dcc
+import dash_html_components as html  
+import plotly 
+import datetime
+import plotly.graph_objs as go 
+from collections import deque 
+import pandas_datareader.data as web
+import dash
+
+
+
+app = dash.Dash('Student Loans Data')
+server = app.server
+
+# external_css = ["https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"]
+# external_js = ['https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js']
+
+# app = dash.Dash('loansdata',
+#                 external_scripts=external_js,
+#                 external_stylesheets=external_css)
+
+df = pd.read_excel(r'../dashapplications/student_loans.xls')
+print(df)
+app.layout = html.Div([
+    html.H1('Student Loans Data'),
+    dcc.Graph(id='loans',
+              figure ={
+                  'data':[{'x': df['observation_date'],'y':df['SLOAS'],'type':'line','name':'boats'}],
+                  'layout':{
+                      'title':'Total Student Loans Trend'
+                      
+                  }
+              })
+])
+
+if __name__ =='__main__':
+    app.run_server(debug=True)
