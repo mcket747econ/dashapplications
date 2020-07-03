@@ -20,7 +20,7 @@ server = app.server
 #                 external_scripts=external_js,
 #                 external_stylesheets=external_css)
 
-df = pd.read_excel(r'../dashapplications/student_loans.xls')
+df = pd.read_excel(r'student_loans.xls')
 print(df)
 app.layout = html.Div([
     html.H1('Student Loans Data'),
